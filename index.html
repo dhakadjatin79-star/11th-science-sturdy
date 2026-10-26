@@ -22,20 +22,33 @@ button{background:#087e8b;color:white;border:0;border-radius:8px;padding:11px 15
 .content{display:none;padding:12px;background:#f5f8fc;border-radius:8px;margin-top:8px;line-height:1.8}
 .content.show{display:block}
 input{padding:12px;width:100%;border:1px solid #aaa;border-radius:8px;font-size:16px}
-footer{text-align:center;background:#123c69;color:white;padding:20px}
+footer{
+  text-align:center;
+  background:#123c69;
+  color:white;
+  padding:25px 12px;
+  margin-top:30px;
+  line-height:1.8;
+}
+footer h2{color:white;margin:0 0 12px}
+footer p{margin:6px 0}
+footer .tagline{font-size:13px;color:#dce9f8;margin-top:14px}
 </style>
 </head>
 <body>
+
 <header>
 <h1>🎓 11th Study Point</h1>
 <p>कक्षा 11वीं की पढ़ाई अब आसान!</p>
 <p>नोट्स • फ़ॉर्मूले • प्रश्न-उत्तर</p>
 </header>
+
 <nav>
 <a href="#home">होम</a>
 <a href="#subjects">विषय</a>
 <a href="#about">हमारे बारे में</a>
 </nav>
+
 <main>
 <section class="welcome" id="home">
 <h2>📚 आपका स्वागत है!</h2>
@@ -55,7 +68,15 @@ footer{text-align:center;background:#123c69;color:white;padding:20px}
 <p>उद्देश्य: आसान भाषा में नोट्स, फ़ॉर्मूले और अभ्यास प्रश्न उपलब्ध कराना।</p>
 </section>
 </main>
-<footer>© 11th Study Point | सीखो, समझो, आगे बढ़ो 🚀</footer>
+
+<!-- FOOTER: CREATOR NAMES -->
+<footer>
+<h2>Made by</h2>
+<p>Mr. Narayan Mehta</p>
+<p>Miss. Disha Sagitra</p>
+<hr style="border:0;border-top:1px solid #ffffff55;max-width:280px;margin:16px auto">
+<p class="tagline">© 11th Study Point | सीखो, समझो, आगे बढ़ो 🚀</p>
+</footer>
 
 <script>
 const subjects = [
@@ -66,7 +87,7 @@ chapters:[
 ["सरल रेखा में गति","विस्थापन, चाल, वेग और त्वरण का अध्ययन।","v = u + at; s = ut + ½at²; v² = u² + 2as","1. चाल और वेग में अंतर बताइए। 2. त्वरण की SI इकाई क्या है?"],
 ["समतल में गति","सदिश, अदिश तथा प्रक्षेप्य गति की मूल अवधारणाएँ।","vx = v cosθ; vy = v sinθ","1. सदिश राशि क्या है? 2. दो सदिश राशियों के उदाहरण दीजिए।"],
 ["गति के नियम","न्यूटन के गति के नियम और संवेग।","F = ma; p = mv","1. न्यूटन का दूसरा नियम लिखिए। 2. संवेग की SI इकाई बताइए।"],
-["कार्य, ऊर्जा और शक्ति","कार्य, गतिज ऊर्जा, स्थितिज ऊर्जा और शक्ति।","W = Fs cosθ; K = ½mv²; P = W/t","1. कार्य की SI इकाई क्या है? 2. ऊर्जा संरक्षण का नियम लिखिए."]
+["कार्य, ऊर्जा और शक्ति","कार्य, गतिज ऊर्जा, स्थितिज ऊर्जा और शक्ति।","W = Fs cosθ; K = ½mv²; P = W/t","1. कार्य की SI इकाई क्या है? 2. ऊर्जा संरक्षण का नियम लिखिए।"]
 ]},
 {
 name:"Chemistry | रसायन विज्ञान", icon:"🧪",
@@ -131,25 +152,26 @@ box.appendChild(ch);
 root.appendChild(box);
 });
 }
+
 function toggleContent(si,ci){
 document.getElementById(`c${si}_${ci}`).classList.toggle("show");
 }
+
 function searchChapters(){
 let q=document.getElementById("search").value.toLowerCase();
-document.querySelectorAll(".subject").forEach(box=>{
+document.querySelectorAll("#allSubjects .subject").forEach(box=>{
 let visible=0;
 box.querySelectorAll(".chapter").forEach(ch=>{
 let show=ch.dataset.search.includes(q);
 ch.style.display=show?"block":"none";
 if(show)visible++;
 });
-let isAbout=box.id==="about";
-box.style.display=(isAbout||visible>0||box.dataset.subject?.includes(q))?"block":"none";
+box.style.display=(visible>0||box.dataset.subject.includes(q))?"block":"none";
 });
 }
+
 render();
 </script>
+
 </body>
 </html>
-
-
